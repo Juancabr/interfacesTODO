@@ -5,6 +5,7 @@
  */
 package com.mycompany.interfacestodos;
 
+import clases.BaseDeDatos;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class InterfazCrearOferta extends javax.swing.JFrame {
 
+    private BaseDeDatos b;
+    
     /**
      * Creates new form InterfazCrearOferta
      */
@@ -205,7 +208,8 @@ public class InterfazCrearOferta extends javax.swing.JFrame {
             String fin = jTextField3.getText();
             double precio = Double.parseDouble(jTextField4.getText());
             
-            
+            b.InsertarOferta(nombre, inicio, fin, precio);
+            JOptionPane.showMessageDialog(null, "Oferta creada correctamente");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos correctamente");
             System.out.println(e.getMessage());

@@ -12,13 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  * @class crea usuarios en nuestra base de datos o carga, muestra o banea a los
@@ -319,5 +317,16 @@ public class BaseDeDatos {
             finalizar();
         }
         return tabla;
+    }
+    
+        public void InsertarOferta(String producto, String inicio, String fin, double precio) {
+        try {
+            st = cargarBD();
+            st.executeUpdate("INSERT INTO oferta(nombre, oinicio, ofin, oprecio) VALUES ('" + producto + "','" + inicio + "','" + fin + "'," + precio + ")");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al registrar el usuario");
+        } finally {
+            finalizar();
+        }
     }
 }

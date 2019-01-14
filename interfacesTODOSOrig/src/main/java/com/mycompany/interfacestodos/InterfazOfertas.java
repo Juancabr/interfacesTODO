@@ -5,12 +5,22 @@
  */
 package com.mycompany.interfacestodos;
 
+import clases.BaseDeDatos;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author rafae
  */
 public class InterfazOfertas extends javax.swing.JFrame {
 
+    private BaseDeDatos b;
+    
     /**
      * Creates new form Ofertas
      */
@@ -65,10 +75,7 @@ public class InterfazOfertas extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -150,7 +157,20 @@ public class InterfazOfertas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.addRow(new Object[]{"Column 1", "Column 2", "Column 3"});
         
+        try {
+            Connection c= DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/usuarios", "root", "admin");
+            Statement smt=(Statement) c.createStatement();
+            ResultSet rs=smt.executeQuery("select * from oferta");
+            while(rs.next()){
+                model.addRow(new Object[]{rs.getString("producto"), rs.getString("oprecio"), rs.getString("oprecionew"), rs.getString("ofin")});
+            }
+            c.close();
+        } catch (SQLException ex) {
+            ex.getStackTrace();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -5,7 +5,6 @@
  */
 package main;
 
-import com.mycompany.interfacestodos.InterfazCrearOferta;
 import com.mycompany.interfacestodos.InterfazPrincipal;
 
 /**
