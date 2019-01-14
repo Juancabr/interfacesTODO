@@ -15,8 +15,8 @@ select * from usuario;
 set global time_zone='+1:00';
 
 -- Crear otro usuario con con ciertos permisos
-create user miguel identified by'12345';
-grant select on usuarios.* to miguel;
+ create user miguel@localhost identified by'12345';
+ grant select on usuarios.* to miguel;
 -- grant all privileges on usuarios.* to miguel;
 
 -- crear tabla producto
@@ -38,3 +38,13 @@ create table compras(
     FOREIGN KEY (usuario) REFERENCES usuario(email)
 );
 -- crear ventana compra (solo si es uan empresa)
+
+create table oferta(
+	nombre varchar(45) primary key,
+    idproducto int(5),
+    oprecio int(5),
+    oprecionew int(5),
+    oinicio date,
+    ofin date,
+    foreign key (idproducto) references producto(idProducto)
+);

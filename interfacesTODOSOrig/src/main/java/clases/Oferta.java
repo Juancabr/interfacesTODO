@@ -12,23 +12,34 @@ import java.time.LocalDate;
  * @author 2DAM
  */
 public class Oferta {
-    private String producto;
+    private Producto producto;
     private LocalDate fechaInicio;
     private LocalDate fechaVencimiento;
-    private int porcentajeOferta;
+    private double precioOferta;
+    private double precioNormal;
 
-    public Oferta(String producto, LocalDate fechaVencimiento, int porcentajeOferta) {
+    public Oferta(Producto producto, LocalDate fechaInicio, LocalDate fechaVencimiento, double precioOferta, double precioNormal) {
         this.producto = producto;
+        this.fechaInicio = fechaInicio;
         this.fechaVencimiento = fechaVencimiento;
-        this.porcentajeOferta = porcentajeOferta;
+        this.precioOferta = precioOferta;
+        this.precioNormal = precioNormal;
     }
 
-    public String getProducto() {
+    public Producto getProducto() {
         return producto;
     }
 
-    public void setProducto(String producto) {
+    public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+    
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
     public LocalDate getFechaVencimiento() {
@@ -39,13 +50,19 @@ public class Oferta {
         this.fechaVencimiento = fechaVencimiento;
     }
 
-    public int getPorcentajeOferta() {
-        return porcentajeOferta;
+    public double getPrecioOferta() {
+        return precioOferta;
     }
 
-    public void setPorcentajeOferta(int porcentajeOferta) {
-        this.porcentajeOferta = porcentajeOferta;
+    public void setPrecioOferta(double precioOferta) {
+        this.precioOferta = precioOferta;
     }
-    
-    
+
+    public double getPrecioNormal() {
+        return precioNormal;
+    }
+
+    public void setPrecioNormal(double precioNormal) {
+        this.precioNormal = precioNormal;
+    }
 }

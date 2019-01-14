@@ -200,15 +200,15 @@ public class InterfazCrearOferta extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try{
-            String nombre = jTextField1.getName().toString();
-            String inicio = jTextField2.getName().toString();
-            String fin = jTextField3.getName().toString();
-            double precio = Double.parseDouble(jTextField4.getName().toString());
+            String nombre = jTextField1.getText();
+            String inicio = jTextField2.getText();
+            String fin = jTextField3.getText();
+            double precio = Double.parseDouble(jTextField4.getText());
             
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos correctamente");
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
