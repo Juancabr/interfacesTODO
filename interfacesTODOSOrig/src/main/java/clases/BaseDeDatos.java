@@ -292,4 +292,32 @@ public class BaseDeDatos {
             
         }
     }
+      
+    /**
+     * @author Rafael-Juanca
+     * @function consulta en la base de datos las ofertas disponibles y la 
+     * carga en una tabla mostrando el producto y el precio
+     * @return la tabla cargada con las ofertas disponibles
+    */
+    public DefaultTableModel mostrarOfertas(){
+        DefaultTableModel tabla = null;
+        try {            
+            tabla = new DefaultTableModel();
+            int numlineas = tabla.getRowCount();
+            tabla.setRowCount(numlineas);
+            tabla.setColumnIdentifiers(new Object[]{"PRODUCTO","PRECIO","OFERTA","HASTA"});
+            st = cargarBD();
+            
+            while(datos.next()){
+            datos = st.executeQuery("select onombre, oprecio from oferta");
+            tabla.addRow(new Object[]{datos.getString("onombre"),datos.getDouble("oprecio"),datos.getDouble("oprecionew"),datos.getDate("ofin")});                
+            }                  
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            finalizar();
+        }
+        return tabla;
+    }
 }
